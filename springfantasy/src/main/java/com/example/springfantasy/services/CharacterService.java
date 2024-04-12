@@ -2,7 +2,7 @@ package com.example.springfantasy.services;
 
 import com.example.springfantasy.entities.Character;
 import com.example.springfantasy.entities.enums.ClasseEnum;
-import com.example.springfantasy.entities.enums.RazzaEnum;
+import com.example.springfantasy.entities.enums.RaceEnum;
 import com.example.springfantasy.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class CharacterService implements CharacterServiceInterface{
         Optional<Character> updatedCharacter = characterRepository.findById(id);
         if (updatedCharacter.isPresent()){
             updatedCharacter.get().setNome(character.getNome());
-            updatedCharacter.get().setRazzaEnum(character.getRazzaEnum());
+            updatedCharacter.get().setRaceEnum(character.getRaceEnum());
             updatedCharacter.get().setLivelloEnum(character.getLivelloEnum());
             updatedCharacter.get().setClasseEnum(character.getClasseEnum());
             updatedCharacter.get().setDescrizione(character.getDescrizione());
@@ -67,14 +67,14 @@ public class CharacterService implements CharacterServiceInterface{
     }
 
     @Override
-    public List<Character> searchByRazza(RazzaEnum razzaEnum) {
-        List<Character> byRazza = characterRepository.findByRazzaEnum(razzaEnum);
-        return byRazza;
+    public List<Character> searchByRace(RaceEnum raceEnum) {
+        List<Character> byRace = characterRepository.findByRaceEnum(raceEnum);
+        return byRace;
     }
 
     @Override
-    public List<Character> searchByClasse(ClasseEnum classeEnum) {
-        List<Character> byClasse = characterRepository.findByClasseEnum(classeEnum);
-        return byClasse;
+    public List<Character> searchByClass(ClasseEnum classeEnum) {
+        List<Character> byClass = characterRepository.findByClasseEnum(classeEnum);
+        return byClass;
     }
 }

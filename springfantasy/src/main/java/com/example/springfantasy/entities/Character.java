@@ -2,7 +2,7 @@ package com.example.springfantasy.entities;
 
 import com.example.springfantasy.entities.enums.ClasseEnum;
 import com.example.springfantasy.entities.enums.LivelloEnum;
-import com.example.springfantasy.entities.enums.RazzaEnum;
+import com.example.springfantasy.entities.enums.RaceEnum;
 import jakarta.persistence.*;
 
 
@@ -15,17 +15,21 @@ public class Character {
     private Long id;
     private String nome;
     @Enumerated
-    private RazzaEnum razzaEnum;
+    private RaceEnum raceEnum;
     @Enumerated
     private ClasseEnum classeEnum;
     @Enumerated
     private LivelloEnum livelloEnum;
     private String descrizione;
 
-    public Character(Long id, String nome, RazzaEnum razzaEnum, ClasseEnum classeEnum, LivelloEnum livelloEnum, String descrizione) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    public Character(Long id, String nome, RaceEnum raceEnum, ClasseEnum classeEnum, LivelloEnum livelloEnum, String descrizione) {
         this.id = id;
         this.nome = nome;
-        this.razzaEnum = razzaEnum;
+        this.raceEnum = raceEnum;
         this.classeEnum = classeEnum;
         this.livelloEnum = livelloEnum;
         this.descrizione = descrizione;
@@ -50,12 +54,12 @@ public class Character {
         this.nome = nome;
     }
 
-    public RazzaEnum getRazzaEnum() {
-        return razzaEnum;
+    public RaceEnum getRaceEnum() {
+        return raceEnum;
     }
 
-    public void setRazzaEnum(RazzaEnum razzaEnum) {
-        this.razzaEnum = razzaEnum;
+    public void setRaceEnum(RaceEnum raceEnum) {
+        this.raceEnum = raceEnum;
     }
 
     public ClasseEnum getClasseEnum() {
@@ -80,5 +84,13 @@ public class Character {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

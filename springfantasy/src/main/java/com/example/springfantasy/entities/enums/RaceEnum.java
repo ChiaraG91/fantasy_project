@@ -1,6 +1,6 @@
 package com.example.springfantasy.entities.enums;
 
-public enum RazzaEnum {
+public enum RaceEnum {
 
     UMANI("umani"),
     NANI("nani"),
@@ -8,7 +8,7 @@ public enum RazzaEnum {
     ORCHI("orchi");
 
     private String descrizione;
-    RazzaEnum(String descrizione) {
+    RaceEnum(String descrizione) {
     }
 
     public String getDescrizione() {

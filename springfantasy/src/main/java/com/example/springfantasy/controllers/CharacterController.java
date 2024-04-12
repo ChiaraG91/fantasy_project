@@ -2,7 +2,7 @@ package com.example.springfantasy.controllers;
 
 import com.example.springfantasy.entities.Character;
 import com.example.springfantasy.entities.enums.ClasseEnum;
-import com.example.springfantasy.entities.enums.RazzaEnum;
+import com.example.springfantasy.entities.enums.RaceEnum;
 import com.example.springfantasy.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -60,13 +60,13 @@ public class CharacterController {
         return ResponseEntity.ok().body(characterOPT);
     }
     @GetMapping("/characters/search-by-race")
-    public ResponseEntity<List<Character>> getCharacterByRace(@RequestParam RazzaEnum razzaEnum){
-        List<Character> characterOPT = characterService.searchByRazza(razzaEnum);
+    public ResponseEntity<List<Character>> getCharacterByRace(@RequestParam RaceEnum raceEnum){
+        List<Character> characterOPT = characterService.searchByRace(raceEnum);
         return ResponseEntity.ok().body(characterOPT);
     }
     @GetMapping("/characters/search-by-class")
     public ResponseEntity<List<Character>> getCharacterByClass(@RequestParam ClasseEnum classeEnum){
-        List<Character> characterOPT = characterService.searchByClasse(classeEnum);
+        List<Character> characterOPT = characterService.searchByClass(classeEnum);
         return ResponseEntity.ok().body(characterOPT);
     }
 }
